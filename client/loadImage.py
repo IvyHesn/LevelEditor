@@ -10,7 +10,7 @@ screen = pygame.display.set_mode(screen_size)
 # 底层
 bg_board = pygame.image.load("res/scene/bg_board.png")
 bg_ele = pygame.image.load("res/scene/bg_ele.png")
-
+chooseframe = pygame.image.load("res/scene/chooseframe.png")
 bg_board_rect = [130, 0, bg_board.get_width(), bg_board.get_height()]
 bg_ele_rect = [726, 0, bg_ele.get_width(), bg_ele.get_height()]
 
@@ -27,10 +27,10 @@ def getPic(ele, path='res/element/'):
     return pic
 
 
-def getChoose_ele(choose_ele_grid):
+def getChoose_ele(iX, iY):
     '''输入点选的格子
     返回点选到的元素'''
-    choose_ele = grid_ele[choose_ele_grid]
+    choose_ele = grid_ele[iY][iX]
     return choose_ele
 
 
@@ -52,13 +52,14 @@ def Index_to_iXY(i):
 
 
 def Index_to_GridXY2(i):
-    '''根据index获取格子的坐标'''
+    '''根据index获取格子的坐标(盘面区域)'''
     gridX = i % 9 * 65 + bg_board_rect[0]
     gridY = i // 9 * 65 + bg_board_rect[1]
     return gridX, gridY
 
 
 def Index_to_GridXY3(i):
+    '''根据index获取格子的坐标(元素区域)'''
     gridX = i % 13 * 65 + bg_ele_rect[0]
     gridY = i // 13 * 65 + bg_ele_rect[1]
     return gridX, gridY

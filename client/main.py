@@ -30,20 +30,18 @@ while 1:
             exit(0)
         if event.type == pygame.MOUSEBUTTONDOWN:
             posX, posY = pygame.mouse.get_pos()
-            getChooseArea(posX, posY)
+            choose_area = getChooseArea(posX, posY)
             if choose_area == 3:  # 点选的是元素区域
                 ele_iX = (posX - bg_ele_rect[0]) // 65
                 ele_iY = (posY - bg_ele_rect[1]) // 65
-                choose_ele_grid = [ele_iX, ele_iY]
-                getChoose_ele(choose_ele_grid)
+                screen.blit(
+                    chooseframe, (Index_to_GridXY3(ele_iX + 13 * ele_iY)))
+                choose_ele = getChoose_ele(ele_iX, ele_iY)
             if choose_area == 2:  # 点选的是盘面区域
                 board_iX = (posX - bg_board_rect[0]) // 65
                 board_iY = (posY - bg_board_rect[1]) // 65
-                choose_board = [board_iX, board_iY]
                 if choose_ele != None:
-                    nodelist = find_nodes(
-                        tree_lc, './level[%s]/grid[%s]/basic' % (levelId, board_iX + 9 * board_iY))
-                    change_node_properties(
-                        nodelist, kv_map['%s'], False % (choose_ele))
+                    level_ele[board_iY][board_iX][
+                        ele_layer['%s' % (choose_ele)]] = choose_ele
 
     pygame.display.update()
