@@ -16,12 +16,12 @@ while 1:
     for eachlayer in range(0, 10):
         for y in range(0, 9):
             for x in range(0, 9):
-                gridX, gridY = Index_to_GridXY2(x + 9 * y)
+                gridX, gridY = Index_to_GridXY_board(x + 9 * y)
                 screen.blit(getPic(level_ele[y][x][eachlayer]), (gridX, gridY))
     # 绘制元素选择区域
     for y in range(0, len(grid_ele)):
         for x in range(0, len(grid_ele[0])):
-            gridX, gridY = Index_to_GridXY3(x + 13 * y)
+            gridX, gridY = Index_to_GridXY_ele(x + 13 * y)
             screen.blit(getPic(grid_ele[y][x]), (gridX, gridY))
 
     for event in pygame.event.get():
@@ -34,14 +34,18 @@ while 1:
             if choose_area == 3:  # 点选的是元素区域
                 ele_iX = (posX - bg_ele_rect[0]) // 65
                 ele_iY = (posY - bg_ele_rect[1]) // 65
-                screen.blit(
-                    chooseframe, (Index_to_GridXY3(ele_iX + 13 * ele_iY)))
+                chooseframe_xy = (Index_to_GridXY_ele(ele_iX + 13 * ele_iY))
                 choose_ele = getChoose_ele(ele_iX, ele_iY)
             if choose_area == 2:  # 点选的是盘面区域
                 board_iX = (posX - bg_board_rect[0]) // 65
                 board_iY = (posY - bg_board_rect[1]) // 65
                 if choose_ele != None:
-                    level_ele[board_iY][board_iX][
-                        ele_layer['%s' % (choose_ele)]] = choose_ele
-
+                    if level_ele[board_iY][board_iX][ele_layer['%s' % (choose_ele)]] == choose_ele:
+                        level_ele[board_iY][board_iX][
+                            ele_layer['%s' % (choose_ele)]] = None
+                    else:
+                        level_ele[board_iY][board_iX][
+                            ele_layer['%s' % (choose_ele)]] = choose_ele
+    if chooseframe_xy != (0, 0):
+        screen.blit(chooseframe, chooseframe_xy)
     pygame.display.update()

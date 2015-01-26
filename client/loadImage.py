@@ -51,14 +51,14 @@ def Index_to_iXY(i):
     return iX, iY
 
 
-def Index_to_GridXY2(i):
+def Index_to_GridXY_board(i):
     '''根据index获取格子的坐标(盘面区域)'''
     gridX = i % 9 * 65 + bg_board_rect[0]
     gridY = i // 9 * 65 + bg_board_rect[1]
     return gridX, gridY
 
 
-def Index_to_GridXY3(i):
+def Index_to_GridXY_ele(i):
     '''根据index获取格子的坐标(元素区域)'''
     gridX = i % 13 * 65 + bg_ele_rect[0]
     gridY = i // 13 * 65 + bg_ele_rect[1]

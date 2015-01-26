@@ -3,6 +3,7 @@ choose_area = None  # 0翻页，1行数，2盘面，3元素，4文件操作
 # 需要变量来分别记录盘面和元素区域的点选情况
 choose_board_grid = [None, None]
 choose_ele_grid = [None, None]
+# 元素区域的元素排布
 grid_ele = [
     [69, 24, 59, 60, 152, 998, 0, 1, 2, 3, 4, 5, 996, ],
     [51, 52, 53, 54, None, None, 6, 9, 12, 15, 18, 21, None, ],
@@ -26,7 +27,7 @@ kv_map = {
     '51': {'id': '51', 'layer': '1', 'objectType': '1', 'picType': '0'},
     '52': {'id': '52', 'layer': '1', 'objectType': '1', 'picType': '1'},
 }
-
+chooseframe_xy = (0, 0)
 ele_layer = {
     '990': 9,
     '991': 9,
