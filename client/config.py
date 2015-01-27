@@ -27,6 +27,7 @@ kv_map = {
     '51': {'id': '51', 'layer': '1', 'objectType': '1', 'picType': '0'},
     '52': {'id': '52', 'layer': '1', 'objectType': '1', 'picType': '1'},
 }
+dirty_rects=[]
 chooseframe_xy = (0, 0)
 ele_layer = {
     '990': 9,
