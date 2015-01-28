@@ -8,9 +8,9 @@ screen_size = (screen_width, screen_height) = (1570, 649)
 screen = pygame.display.set_mode(screen_size)
 
 # 底层
-bg_board = pygame.image.load("res/scene/bg_board.png")
-bg_ele = pygame.image.load("res/scene/bg_ele.png")
-chooseframe = pygame.image.load("res/scene/chooseframe.png")
+bg_board = pygame.image.load("res/scene/bg_board.png").convert_alpha()
+bg_ele = pygame.image.load("res/scene/bg_ele.png").convert_alpha()
+chooseframe = pygame.image.load("res/scene/chooseframe.png").convert_alpha()
 bg_board_rect = [130, 0, bg_board.get_width(), bg_board.get_height()]
 bg_ele_rect = [726, 0, bg_ele.get_width(), bg_ele.get_height()]
 
@@ -21,9 +21,9 @@ bg_ele_rect = [726, 0, bg_ele.get_width(), bg_ele.get_height()]
 def getPic(ele, path='res/element/'):
     '''根据elementID和路径，获取ele对应的图片'''
     if ele != None:
-        pic = pygame.image.load(path + str(ele) + '.png')
+        pic = pygame.image.load(path + str(ele) + '.png').convert_alpha()
     if ele == None:
-        pic = pygame.image.load(path + '999' + '.png')
+        pic = pygame.image.load(path + '999' + '.png').convert_alpha()
     return pic
 
 
